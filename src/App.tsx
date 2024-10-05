@@ -3,6 +3,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { Carousel, CarouselItem, CarouselContent, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import WallSelector from "./components/WallSelector";
 
 function App() {
   return (
@@ -27,16 +28,8 @@ function App() {
         </button>
 
         {/* Center Section: Carousel */}
-        <div className="flex items-center flex-1 mx-16">
-        <Carousel className="flex-1">
-          <CarouselContent className="-ml-2 md:-ml-4">
-            <CarouselItem className="pl-2 md:pl-4">Test Wall Name: This Name is Long and Should be read in it's entirety</CarouselItem>
-            <CarouselItem className="pl-2 md:pl-4">Pokemon Collection: A long and arduous disection of pokemon history and stuff</CarouselItem>
-            <CarouselItem className="pl-2 md:pl-4">Pokemon Collection: A long and arduous disection of pokemon history and stuff</CarouselItem>
-          </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-        </Carousel>
+        <div className="flex-1 flex justify-center">
+        <WallSelector />
         </div>
 
         {/* Right Section: Plus Button and Mode Toggle */}
@@ -45,11 +38,9 @@ function App() {
             <Plus className="h-4 w-4" />
             <span className="sr-only">Add</span>
           </Button>
-        </div>
+          <ModeToggle />
+      </div>
       </nav>
-      <section className="p-4">
-      <ModeToggle />
-      </section>
 
     </ThemeProvider>
   );
