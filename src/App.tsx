@@ -1,9 +1,8 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Carousel, CarouselItem, CarouselContent, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import WallSelector from "./components/WallSelector";
+import WallMenubar from "./components/WallMenubar";
 
 function App() {
   return (
@@ -28,8 +27,8 @@ function App() {
         </button>
 
         {/* Center Section: Carousel */}
-        <div className="flex-1 flex justify-center">
-        <WallSelector />
+        <div className="flex-1 flex justify-start">
+        <WallMenubar />
         </div>
 
         {/* Right Section: Plus Button and Mode Toggle */}
