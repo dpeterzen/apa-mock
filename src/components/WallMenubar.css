@@ -1,0 +1,9 @@
+.menubar-trigger {
+  transition: border 0.3s ease;
+  border: transparent;
+}
+
+.pencil-toggler:hover ~ .menubar-trigger,
+.pencil-toggler:focus ~ .menubar-trigger {
+  border: 1px solid red !important; /* Adjust the border color and style as needed */
+}

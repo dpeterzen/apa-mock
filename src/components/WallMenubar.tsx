@@ -6,8 +6,9 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { Pencil, Check } from "lucide-react"; // Assuming you have lucide-react installed
-import { Button } from "@/components/ui/button"; // Assuming you have a Button component
+import { Pencil } from "lucide-react"; // Assuming you have lucide-react installed
+import { Toggle } from "@/components/ui/toggle"; // Assuming you have a Toggle component
+import "./WallMenubar.css";
 
 const wallNames = [
   "Test Wall Name: This Name is Long and Should be read in it's entirety",
@@ -22,8 +23,8 @@ export default function WallMenubar() {
   const inputRef = useRef<HTMLInputElement>(null);
   const spanRef = useRef<HTMLSpanElement>(null);
 
-  const handleEdit = () => {
-    setIsEditing(true);
+  const handleEditToggle = () => {
+    setIsEditing((prev) => !prev);
   };
 
   const handleSave = () => {
@@ -31,13 +32,19 @@ export default function WallMenubar() {
     setIsEditing(false);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSave();
+    }
+  };
+
   useEffect(() => {
     if (isEditing && inputRef.current && spanRef.current) {
       spanRef.current.textContent = newWallName;
-      inputRef.current.style.width = `${spanRef.current.offsetWidth + 90}px`; // Adding 10px padding
+      inputRef.current.style.width = `${spanRef.current.offsetWidth + 80}px`; // Adding 10px padding
     }
   }, [newWallName, isEditing]);
-  
+
   return (
     <Menubar>
       <MenubarMenu>
@@ -49,22 +56,24 @@ export default function WallMenubar() {
                 type="text"
                 value={newWallName}
                 onChange={(e) => setNewWallName(e.target.value)}
-                className="border p-2 rounded bg-inherit text-lg"
+                onKeyDown={handleKeyDown}
+                className="border p-1 rounded bg-inherit text-lg"
               />
-              <Button variant="outline" size="icon" onClick={handleSave}>
-                <Check className="h-4 w-4" />
-              </Button>
               <span
                 ref={spanRef}
                 className="absolute invisible whitespace-nowrap"
               />
             </>
           ) : (
-            <MenubarTrigger>{selectedWall}</MenubarTrigger>
+            <MenubarTrigger><span className="menubar-trigger">{selectedWall}</span></MenubarTrigger>
           )}
-          <Button variant="outline" size="icon" onClick={handleEdit}>
+          <Toggle
+            className="rounded-full pencil-toggler"
+            pressed={isEditing}
+            onPressedChange={handleEditToggle}
+          >
             <Pencil className="h-4 w-4" />
-          </Button>
+          </Toggle>
         </div>
         <MenubarContent>
           {wallNames.map((wallName, index) => (
