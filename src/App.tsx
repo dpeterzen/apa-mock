@@ -6,44 +6,30 @@ import { Plus } from "lucide-react";
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
 import "./App.css";
+import DynamicMinMaxLayout from "@/components/DynamicMinMaxLayout";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 function App() {
-  const layouts = {
-    lg: [
-      { i: "a", x: 0, y: 0, w: 1, h: 2, static: true },
-      { i: "b", x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4 },
-      { i: "c", x: 4, y: 0, w: 1, h: 2 }
-    ],
-    md: [
-      { i: "a", x: 0, y: 0, w: 1, h: 2, static: true },
-      { i: "b", x: 1, y: 0, w: 2, h: 2, minW: 2, maxW: 4 },
-      { i: "c", x: 3, y: 0, w: 1, h: 2 }
-    ],
-    sm: [
-      { i: "a", x: 0, y: 0, w: 1, h: 2, static: true },
-      { i: "b", x: 1, y: 0, w: 1, h: 2, minW: 1, maxW: 2 },
-      { i: "c", x: 2, y: 0, w: 1, h: 2 }
-    ],
-    xs: [
-      { i: "a", x: 0, y: 0, w: 1, h: 2, static: true },
-      { i: "b", x: 0, y: 1, w: 1, h: 2, minW: 1, maxW: 2 },
-      { i: "c", x: 0, y: 2, w: 1, h: 2 }
-    ]
-  };
+  // const layouts = {
+  //   lg: [
+  //     { i: "a", x: 0, y: 0, w: 1, h: 2, minH: 2, resizeHandles: ["s", "w", "e", "n", "sw", "nw", "se", "ne"] },
+  //     { i: "b", x: 1, y: 0, w: 1, h: 2, minH: 2, resizeHandles: ["s", "w", "e", "n", "sw", "nw", "se", "ne"] },
+  //     { i: "c", x: 4, y: 0, w: 1, h: 2, minH: 2, resizeHandles: ["s", "w", "e", "n", "sw", "nw", "se", "ne"] }
+  //   ],
 
-  const handleDragStop = (layout: Layout[], oldItem: Layout, newItem: Layout) => {
-    const maxCols = 12; // Adjust based on your max columns
-    const maxRows = 22; // Adjust based on your max rows
+  // };
 
-    if (newItem.x + newItem.w > maxCols) {
-      newItem.x = maxCols - newItem.w;
-    }
-    if (newItem.y >= maxRows) {
-      newItem.y = oldItem.y; // Prevent moving if it exceeds the max row limit
-    }
-  };
+  // const handleDragStop = (layout: Layout[], oldItem: Layout, newItem: Layout) => {
+  //   const maxCols = 12; // Adjust based on your max columns
+  //   const maxRows = 22; // Adjust based on your max rows
+  //   if (newItem.x + newItem.w > maxCols) {
+  //     newItem.x = maxCols - newItem.w;
+  //   }
+  //   if (newItem.y >= maxRows) {
+  //     newItem.y = oldItem.y; // Prevent moving if it exceeds the max row limit
+  //   }
+  // };
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -78,30 +64,27 @@ function App() {
           <ModeToggle />
         </div>
       </nav>
-      <ResponsiveGridLayout
+      {/* <ResponsiveGridLayout
         className="layout border"
         layouts={layouts}
-        breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480 }}
-        cols={{ lg: 12, md: 10, sm: 6, xs: 4 }}
+        // breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480 }}
+        // cols={{ lg: 12, md: 10, sm: 6, xs: 4 }}
         rowHeight={30}
-        draggableHandle=".handle"
         verticalCompact={false}
         allowOverlap={true}
         onDragStop={handleDragStop}
       >
-        <div className="border" key="a">
-          <div className="handle">Drag</div>
-          a
+        <div className="bg-stone-900 rounded border-2 p-1.5" key="a">
+          <textarea className="w-full h-full resize-none">a</textarea>
         </div>
-        <div className="border" key="b">
-          <div className="handle">Drag</div>
-          b
+        <div className="bg-stone-900 rounded border-2 p-1.5" key="b">
+          <textarea className="w-full h-full resize-none">b</textarea>
         </div>
-        <div className="border" key="c">
-          <div className="handle">Drag</div>
-          c
+        <div className="bg-stone-900 rounded border-2 p-1.5" key="c">
+          <textarea className="w-full h-full resize-none">c</textarea>
         </div>
-      </ResponsiveGridLayout>
+      </ResponsiveGridLayout> */}
+      <DynamicMinMaxLayout />
     </ThemeProvider>
   );
 }
