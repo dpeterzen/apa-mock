@@ -4,6 +4,8 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 // import WallMenubar from "./components/WallMenubar";
+import "/node_modules/react-grid-layout/css/styles.css";
+import "/node_modules/react-resizable/css/styles.css";
 
 function App() {
   const layout = [
