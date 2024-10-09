@@ -1,0 +1,13 @@
+.react-grid-layout {
+    max-width: 100vw;
+    max-height: 2000px;
+}
+
+.vertical-boundary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px dashed red;
+    pointer-events: none; /* Ensure it doesn't interfere with dragging */
+}
