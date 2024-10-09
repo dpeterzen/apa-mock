@@ -55,10 +55,20 @@ function App() {
         cols={12}
         rowHeight={30}
         width={1200}
+        draggableHandle=".handle"
       >
-        <div className="border" key="a">a</div>
-        <div className="border" key="b">b</div>
-        <div className="border" key="c">c</div>
+        <div className="border" key="a">
+          <div className="handle">Drag</div>
+          a
+        </div>
+        <div className="border" key="b">
+          <div className="handle">Drag</div>
+          b
+        </div>
+        <div className="border" key="c">
+          <div className="handle">Drag</div>
+          c
+        </div>
       </GridLayout>
     </ThemeProvider>
   );
