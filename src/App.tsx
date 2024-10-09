@@ -1,10 +1,17 @@
+import GridLayout from "react-grid-layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import WallMenubar from "./components/WallMenubar";
+// import WallMenubar from "./components/WallMenubar";
 
 function App() {
+  const layout = [
+    { i: "a", x: 0, y: 0, w: 1, h: 2, static: true },
+    { i: "b", x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4 },
+    { i: "c", x: 4, y: 0, w: 1, h: 2 }
+  ];
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <nav className="flex items-center justify-between p-4">
@@ -28,7 +35,7 @@ function App() {
 
         {/* Center Section: Carousel */}
         <div className="flex-1 flex justify-start">
-        <WallMenubar />
+        {/* New nav component here @workspace help me create a new component for my nav. I want the container to fill the  */}
         </div>
 
         {/* Right Section: Plus Button and Mode Toggle */}
@@ -40,7 +47,17 @@ function App() {
           <ModeToggle />
       </div>
       </nav>
-
+      <GridLayout
+        className="layout border"
+        layout={layout}
+        cols={12}
+        rowHeight={30}
+        width={1200}
+      >
+        <div className="border" key="a">a</div>
+        <div className="border" key="b">b</div>
+        <div className="border" key="c">c</div>
+      </GridLayout>
     </ThemeProvider>
   );
 }
