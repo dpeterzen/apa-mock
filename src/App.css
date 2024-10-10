@@ -24,3 +24,106 @@ textarea {
   /* border: 1px solid hsl(var(--border)); */
 }
 
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-s::after,
+.react-grid-item > .react-resizable-handle.react-resizable-handle-w::after,
+.react-grid-item > .react-resizable-handle.react-resizable-handle-e::after,
+.react-grid-item > .react-resizable-handle.react-resizable-handle-n::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 25px;
+  height: 2px; /* Change height to 2px for a flat line */
+  background-color: none; /* Use background color instead of border */
+}
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-s {
+  bottom: -5px;
+  transform: rotate(0deg);
+  width: 25px;
+  height: 8px;
+}
+.react-grid-item > .react-resizable-handle.react-resizable-handle-w {
+  left: -14px;
+  transform: rotate(90deg); 
+  width: 25px;
+  height: 8px;
+}
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-e {
+  right: -14px;
+  transform: rotate(90deg);
+  width: 25px;
+  height: 8px;
+}
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-n {
+  top: -5px;
+  transform: rotate(0deg);
+  width: 25px;
+  height: 8px;
+}
+
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-sw::after,
+.react-grid-item > .react-resizable-handle.react-resizable-handle-nw::after,
+.react-grid-item > .react-resizable-handle.react-resizable-handle-se::after,
+.react-grid-item > .react-resizable-handle.react-resizable-handle-ne::after {
+  content: "";
+  position: absolute;
+
+  width: 0px;
+  height: 0px;
+  border-right: 0;
+  border: none;
+}
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-sw {
+  transform: rotate(-135deg);
+  width: 12px;
+  height: 12px;
+  bottom: -2px;
+  left: -2px;
+  border-top: 2px solid red;
+  border-radius: 1rem;
+}
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-nw {
+  transform: rotate(-45deg);
+  width: 12px;
+  height: 12px;
+  top: -2px;
+  left: -2px;
+  border-top: 2px solid red;
+  border-radius: 1rem;
+}
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-se {
+  transform: rotate(135deg);
+  width: 12px;
+  height: 12px;
+  bottom: -2px;
+  right: -2px;
+  border-top: 2px solid red;
+  border-radius: 1rem;
+}
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-ne {
+  transform: rotate(45deg);
+  width: 12px;
+  height: 12px;
+  top: -2px;
+  right: -2px;
+  border-top: 2px solid red;
+  border-radius: 1rem;
+}
+
+.react-resizable-handle {
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  box-sizing: border-box;
+  background-image: none;
+  background-position: bottom right;
+  padding: 0;
+}
