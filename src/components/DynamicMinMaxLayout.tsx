@@ -30,19 +30,27 @@ const DynamicMinMaxLayout = ({
   const generateDOM = useCallback(() => {
     const layout = generateLayout();
     return _.map(layout, (l, index) => {
-      if (index === layout.length - 1) {
-        return (
-          <div className=" rounded-md border-2" key={l.i} data-grid={l}>
-            <img src={scoobydoo} alt="Scooby Doo" className="rounded-[4px] w-full h-full object-cover" /> {/* object-contain, object-cover, object-fill object-fit or max-w-full max-h-full */}
-          </div>
-        );
-      } else {
-        return (
-          <div className=" rounded-md border-2" key={l.i} data-grid={l}>
+      return (
+        <div className="relative rounded-md border-2" key={l.i} data-grid={l}>
+          {index === layout.length - 1 ? (
+            <img src={scoobydoo} alt="Scooby Doo" className="rounded-[4px] w-full h-full object-cover" />
+          ) : (
             <textarea className="rounded-md w-full h-full resize-none" defaultValue={l.i}></textarea>
-          </div>
-        );
-      }
+          )}
+        <span className="absolute top-[-6px] left-1/2 rotate-90 transform -translate-x-1/2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
+        </span>
+        <span className="absolute right-[-21px] top-1/2 transform -translate-y-1/2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
+        </span>
+        <span className="absolute bottom-[-21px] left-1/2 rotate-90 transform -translate-x-1/2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
+        </span>
+        <span className="absolute left-[-4px] top-1/2 transform -translate-y-1/2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
+        </span>
+        </div>
+      );
     });
   }, [generateLayout]);
 
