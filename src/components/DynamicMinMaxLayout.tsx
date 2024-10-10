@@ -32,14 +32,14 @@ const DynamicMinMaxLayout = ({
     return _.map(layout, (l, index) => {
       if (index === layout.length - 1) {
         return (
-          <div className="bg-stone-900 rounded border-2 p-1.5" key={l.i} data-grid={l}>
-            <img src={scoobydoo} alt="Scooby Doo" className="w-full h-full object-contain" />
+          <div className=" rounded-md border-2" key={l.i} data-grid={l}>
+            <img src={scoobydoo} alt="Scooby Doo" className="rounded-[4px] w-full h-full object-cover" /> {/* object-contain, object-cover, object-fill object-fit or max-w-full max-h-full */}
           </div>
         );
       } else {
         return (
-          <div className="bg-stone-900 rounded border-2 p-1.5" key={l.i} data-grid={l}>
-            <textarea className="w-full h-full resize-none" defaultValue={l.i}></textarea>
+          <div className=" rounded-md border-2" key={l.i} data-grid={l}>
+            <textarea className="rounded-md w-full h-full resize-none" defaultValue={l.i}></textarea>
           </div>
         );
       }
