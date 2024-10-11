@@ -58,7 +58,7 @@ function App() {
         {/* Right Section: Plus Button and Mode Toggle */}
         <div className="flex items-center">
           <Button variant="outline" size="icon">
-            <Plus className="h-4 w-4" />
+            <Plus className="h-6 w-6" />
             <span className="sr-only">Add</span>
           </Button>
           <ModeToggle />
