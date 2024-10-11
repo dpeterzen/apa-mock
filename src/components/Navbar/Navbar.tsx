@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
+import { EllipsisVertical ,Ellipsis, Plus } from 'lucide-react';
 import { ModeToggle } from '@/components/mode-toggle';
+import NavbarOptions from './NavbarOptions';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -36,6 +37,7 @@ const Navbar = () => {
           <Plus className="h-7 w-7" />
           <span className="sr-only">Add</span>
         </Button>
+        <NavbarOptions />
         <ModeToggle />
       </div>
     </nav>
