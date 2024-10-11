@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import _ from "lodash";
 import RGL, { WidthProvider } from "react-grid-layout";
+import { Textarea } from '@/components/ui/textarea';
 import scoobydoo from '../assets/scoobydoo.jpg';
 
 const ReactGridLayout = WidthProvider(RGL);
@@ -35,7 +36,7 @@ const DynamicMinMaxLayout = ({
           {index === layout.length - 1 ? (
             <img src={scoobydoo} alt="Scooby Doo" className="rounded-[4px] w-full h-full object-cover" />
           ) : (
-            <textarea className="rounded-md w-full h-full resize-none" defaultValue={l.i}></textarea>
+            <Textarea className="p-0 min-h-0 rounded-md w-full h-full resize-none" defaultValue={l.i}></Textarea>
           )}
         <span className="absolute top-[-5px] left-1/2 rotate-90 transform -translate-x-1/2">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
@@ -86,7 +87,7 @@ const DynamicMinMaxLayout = ({
 
   return (
     <ReactGridLayout
-      className="border"
+      className="border-b"
       onLayoutChange={handleLayoutChange}
       // onResize={handleResize}
       isDraggable={isDraggable}
