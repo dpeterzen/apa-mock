@@ -5,12 +5,29 @@ import "/node_modules/react-resizable/css/styles.css";
 import "./App.css";
 import DynamicMinMaxLayout from "@/components/DynamicMinMaxLayout";
 
-
 function App() {
+
+  // Define the required props for DynamicMinMaxLayout
+  const items = 4; // Example value, adjust as needed
+  const cols = 12; // Example value, adjust as needed
+  const isDraggable = true; // Example value, adjust as needed
+  const isResizable = true; // Example value, adjust as needed
+  const rowHeight = 30; // Example value, adjust as needed
+  const onLayoutChange = (layout) => {
+    console.log("Layout changed:", layout);
+  };
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Navbar />
-      <DynamicMinMaxLayout />
+        <Navbar />
+        <DynamicMinMaxLayout
+          items={items}
+          cols={cols}
+          isDraggable={isDraggable}
+          isResizable={isResizable}
+          rowHeight={rowHeight}
+          onLayoutChange={onLayoutChange}
+        />
     </ThemeProvider>
   );
 }
