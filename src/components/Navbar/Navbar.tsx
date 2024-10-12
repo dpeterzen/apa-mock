@@ -24,7 +24,7 @@ const Navbar = () => {
       {/* Left Section */}
       <Tooltip text={"Open/close sidebar"}>
         <Button className="border-0 h-8 w-8" variant="outline" size="icon">
-          <LayoutDashboard className="w-6 h-6" />
+          <LayoutDashboard className="w-6 h-6 rotate-90" />
         </Button>
       </Tooltip>
       {/* Center Section */}

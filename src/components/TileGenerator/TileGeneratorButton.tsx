@@ -13,7 +13,7 @@ const TileGeneratorButton = () => {
       size="icon"
       onClick={handleClick}
     >
-        <LayoutDashboard className="w-12 h-12" />
+        <LayoutDashboard className="w-12 h-12 rotate-90" />
       {/* + */}
     </Button>
   );
