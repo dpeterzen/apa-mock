@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTheme } from "@/components/theme-provider";
 import {
   LogOut,
@@ -23,11 +24,16 @@ import {
 
 export default function NavbarOptions() {
   const { theme, setTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <DropdownMenu>
+    <DropdownMenu onOpenChange={setMenuOpen}>
       <DropdownMenuTrigger asChild>
-        <Button className="border-0 h-8 w-8" variant="outline" size="icon">
+        <Button
+            className={`border-0 h-8 w-8 ${menuOpen ? 'bg-accent dark:bg-zinc-800' : ''}`}
+            variant="outline"
+            size="icon"
+          >
           <EllipsisVertical className="h-6 w-6" />
           <span className="sr-only">Navbar Options</span>
         </Button>
