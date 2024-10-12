@@ -30,19 +30,20 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
             <img src={scoobydoo} alt="Scooby Doo" className="rounded-[4px] w-full h-full object-cover" />
           ) : (
             <Textarea className="p-0 min-h-0 rounded-md w-full h-full resize-none" defaultValue={l.i}></Textarea>
-          )}
-        <span className="absolute top-[-5px] left-1/2 rotate-90 transform -translate-x-1/2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
-        </span>
-        <span className="absolute right-[-21px] top-1/2 transform -translate-y-1/2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
-        </span>
-        <span className="absolute bottom-[-21px] left-1/2 rotate-90 transform -translate-x-1/2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
-        </span>
-        <span className="absolute left-[-5px] top-1/2 transform -translate-y-1/2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16"/></svg>
-        </span>
+            )}
+            <span className="absolute top-[-15px] left-1/2 -rotate-90 transform -translate-x-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16" /></svg>
+            </span>
+            <span className="absolute right-[-9px] top-1/2 transform -translate-y-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16" /></svg>
+            </span>
+            <span className="absolute bottom-[-15px] left-1/2 rotate-90 transform -translate-x-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16" /></svg>
+            </span>
+            <span className="absolute left-[-9px] top-1/2 rotate-180 transform -translate-y-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16" /></svg>
+            </span>
+
         </div>
       );
     });
@@ -80,7 +81,7 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
 
   return (
     <ReactGridLayout
-      className="border-b"
+      className="border-b px-1"
       onLayoutChange={handleLayoutChange}
       // onResize={handleResize}
       isDraggable={isDraggable}
