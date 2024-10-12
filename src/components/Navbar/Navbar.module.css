@@ -1,6 +1,29 @@
 .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    transition: border-bottom .1s ease-in-out;
-  }
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: border-bottom .1s ease-in-out;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  top: 98%;
+  right: -36%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+

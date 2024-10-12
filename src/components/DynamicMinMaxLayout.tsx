@@ -11,8 +11,8 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
     return _.map(new Array(items), (item, i) => {
       return {
         i: i.toString(),
-        x: i % cols,
-        y: Math.floor(i / cols),
+        x: (i + 1) % cols, // Start x coordinate in the second position
+        y: Math.floor((i + 1) / cols),
         w: 1,
         h: 2,
         minH: 2,

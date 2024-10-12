@@ -1,26 +1,14 @@
 import { useTheme } from "@/components/theme-provider";
 import {
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
   LogOut,
-  Mail,
-  MessageSquare,
   Plus,
-  PlusCircle,
-  Settings,
   User,
-  UserPlus,
   Users,
   EllipsisVertical,
-  Ellipsis,
   Search,
   Sun,
   Moon
 } from "lucide-react"
-
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -28,13 +16,8 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -44,12 +27,12 @@ export default function NavbarOptions() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="border-0 h-9 w-9" variant="outline" size="icon">
-          <EllipsisVertical className="h-7 w-7" />
+        <Button className="border-0 h-8 w-8" variant="outline" size="icon">
+          <EllipsisVertical className="h-6 w-6" />
           <span className="sr-only">Navbar Options</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-56 mr-1">
         <DropdownMenuItem>
           <Search className="mr-2 h-4 w-4" />
           <span>Search</span>
