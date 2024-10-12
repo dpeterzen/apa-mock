@@ -4,6 +4,7 @@ import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
 import "./App.css";
 import DynamicMinMaxLayout from "@/components/DynamicMinMaxLayout";
+import TileGeneratorButton from "@/components/TileGenerator/TileGeneratorButton";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           rowHeight={rowHeight}
           onLayoutChange={onLayoutChange}
         />
+        <TileGeneratorButton />
     </ThemeProvider>
   );
 }
