@@ -41,7 +41,7 @@ const Navbar = () => {
       </Tooltip>
       <span className={styles.tooltip}>
         <NavbarOptions />
-        <span className={`${styles.tooltiptext} mx-1 my-1.5 z-[1001] overflow-hidden rounded-md border bg-accent px-1.5 pb-0.5 pt-[0.1rem] text-base text-popover-foreground shadow-md`}>
+        <span className={`${styles.tooltiptext} mx-1 my-1.5 z-[1001] overflow-hidden rounded-md border bg-white dark:bg-zinc-700 px-1.5 pb-0.5 pt-[0.1rem] text-base text-popover-foreground shadow-md`}>
           More actions
         </span>
       </span>

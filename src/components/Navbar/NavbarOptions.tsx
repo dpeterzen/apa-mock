@@ -3,7 +3,7 @@ import {
   LogOut,
   Plus,
   User,
-  Users,
+  ArrowRightLeft,
   EllipsisVertical,
   Search,
   Sun,
@@ -32,7 +32,7 @@ export default function NavbarOptions() {
           <span className="sr-only">Navbar Options</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 mr-1">
+      <DropdownMenuContent className="w-56 mr-1 dark:bg-zinc-900">
         <DropdownMenuItem>
           <Search className="mr-2 h-4 w-4" />
           <span>Search</span>
@@ -40,7 +40,7 @@ export default function NavbarOptions() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <Users className="mr-2 h-4 w-4" />
+            <ArrowRightLeft className="mr-2 h-4 w-4" />
             <span>Switch Walls</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
