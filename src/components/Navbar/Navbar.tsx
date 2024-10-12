@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { EllipsisVertical ,Ellipsis, Plus } from 'lucide-react';
-import { ModeToggle } from '@/components/mode-toggle';
+import { Plus } from 'lucide-react';
 import NavbarOptions from './NavbarOptions';
 import styles from './Navbar.module.css';
 
@@ -38,7 +37,6 @@ const Navbar = () => {
           <span className="sr-only">Add</span>
         </Button>
         <NavbarOptions />
-        <ModeToggle />
       </div>
     </nav>
   );
