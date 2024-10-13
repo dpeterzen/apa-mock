@@ -71,7 +71,7 @@ const WallTitle = () => {
             className="dark:text-zinc-300 w-full flex-grow min-h-[45px] p-1 text-[26px] leading-[35px] font-bold focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:border-zinc-700 overflow-hidden text-ellipsis whitespace-nowrap"
           />
           {showTooltip && (
-            <div className="absolute top-full right-0 m-1 mr-0 z-[1001] overflow-hidden rounded-md border bg-white dark:bg-zinc-700 px-1.5 pb-0.5 pt-[0.1rem] text-base text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+            <div className="absolute top-full right-0 m-1 mr-0 z-[1001] overflow-hidden rounded-md border bg-white dark:bg-zinc-700 px-1.5 pb-0.5 pt-[0.1rem] text-[15px] text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
               {tooltipMessage}
             </div>
           )}
