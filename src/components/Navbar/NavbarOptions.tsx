@@ -63,8 +63,8 @@ export default function NavbarOptions() {
             <span>Archive</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Trash2 className="text-red-400 mr-2 h-4 w-4" />
-            <span className="text-red-400">Delete</span>
+            <Trash2 className="text-red-600 dark:text-red-400 mr-2 h-4 w-4" />
+            <span className="text-red-600 dark:text-red-400">Delete</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
