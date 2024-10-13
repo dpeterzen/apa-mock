@@ -91,7 +91,7 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
 
   return (
     <ReactGridLayout
-      className="border-b px-1"
+      className="px-1"
       onLayoutChange={handleLayoutChange}
       // onResize={handleResize}
       isDraggable={isDraggable}
