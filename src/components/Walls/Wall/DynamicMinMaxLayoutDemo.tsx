@@ -6,16 +6,25 @@ import scoobydoo from '@/assets/scoobydoo.jpg';
 
 const ReactGridLayout = WidthProvider(RGL);
 
-interface DynamicMinMaxLayoutProps {
+interface DynamicMinMaxLayoutDemoProps {
   items: number[]; // Adjust the type as needed
   cols: number;
   isDraggable: boolean;
   isResizable: boolean;
   rowHeight: number;
-  onLayoutChange: (layout: Layout[]) => void; // Adjust the type as needed
+  onLayoutChange: (layout: Layout[]) => void;
+  useCSSTransforms: boolean;
 }
 
-const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight, onLayoutChange }: DynamicMinMaxLayoutProps) => {
+const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
+  items,
+  cols,
+  isDraggable,
+  isResizable,
+  rowHeight,
+  onLayoutChange,
+  useCSSTransforms
+}) => {
   const generateLayout = useCallback(() => {
     return _.map(items, (item, i) => {
       return {
@@ -25,6 +34,7 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
         w: 1,
         h: 2,
         minH: 2,
+        maxH: 80,
         resizeHandles: ["s", "w", "e", "n", "sw", "nw", "se", "ne"]
       };
     });
@@ -34,9 +44,9 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
     const layout = generateLayout();
     return _.map(layout, (l, index) => {
       return (
-        <div className="relative rounded-md border-2" key={l.i} data-grid={l}>
+        <div className="relative rounded-sm border-2" key={l.i} data-grid={l}>
           {index === layout.length - 1 ? (
-            <img src={scoobydoo} alt="Scooby Doo" className="rounded-[4px] w-full h-full object-cover" />
+            <img src={scoobydoo} alt="Scooby Doo" className="rounded-[2px] w-full h-full object-cover" />
           ) : (
             <Textarea className="p-0 min-h-0 rounded-md w-full h-full resize-none" defaultValue={l.i}></Textarea>
             )}
@@ -79,7 +89,7 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
 
   // layout param below is thrown out. layout: Layout[]
   const handleDragStop = (_: Layout[], oldItem: Layout, newItem: Layout) => {
-    const maxCols = 12; // Adjust based on your max columns
+    const maxCols = 24; // Adjust based on your max columns
     const maxRows = 42; // Adjust based on your max rows
     if (newItem.x + newItem.w > maxCols) {
       newItem.x = maxCols - newItem.w;
@@ -91,7 +101,7 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
 
   return (
     <ReactGridLayout
-      className="px-1"
+      className=""
       onLayoutChange={handleLayoutChange}
       // onResize={handleResize}
       isDraggable={isDraggable}
@@ -101,10 +111,12 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
       verticalCompact={false}
       allowOverlap={true}
       onDragStop={handleDragStop}
+      useCSSTransforms={useCSSTransforms}
+      margin={[1, 1]}
     >
       {generateDOM()}
     </ReactGridLayout>
   );
 };
 
-export default DynamicMinMaxLayout;
+export default DynamicMinMaxLayoutDemo;

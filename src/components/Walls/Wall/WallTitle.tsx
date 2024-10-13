@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import Tooltip from "@/components/ui/tooltip";
 
 const WallTitle = () => {
   const [title, setTitle] = useState("apa.io");

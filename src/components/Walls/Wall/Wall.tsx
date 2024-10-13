@@ -39,6 +39,7 @@ const Wall: React.FC = () => {
         isResizable={isResizable}
         rowHeight={rowHeight}
         onLayoutChange={onLayoutChange}
+        useCSSTransforms={true}
       />
     </>
   );
