@@ -8,12 +8,12 @@ const TileGeneratorButton = () => {
 
   return (
     <Button
-      className="absolute top-16 right-4 w-16 h-16"
+      className="fixed bottom-4 right-4 w-20 h-20"
       variant="outline"
       size="icon"
       onClick={handleClick}
     >
-        <LayoutDashboard className="w-12 h-12 rotate-90" />
+        <LayoutDashboard className="w-16 h-16 rotate-90" />
       {/* + */}
     </Button>
   );

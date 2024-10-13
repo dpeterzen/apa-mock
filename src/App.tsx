@@ -5,6 +5,7 @@ import "/node_modules/react-resizable/css/styles.css";
 import "./App.css";
 import DynamicMinMaxLayout from "@/components/DynamicMinMaxLayout";
 import TileGeneratorButton from "@/components/TileGenerator/TileGeneratorButton";
+import WallTitle from "@/components/Wall/WallTitle";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Navbar />
+        <WallTitle />
         <DynamicMinMaxLayout
           items={items}
           cols={cols}
