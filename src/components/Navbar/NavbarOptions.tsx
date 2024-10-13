@@ -8,7 +8,9 @@ import {
   EllipsisVertical,
   Search,
   Sun,
-  Moon
+  Moon,
+  Trash2,
+  Archive
 } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -38,7 +40,7 @@ export default function NavbarOptions() {
           <span className="sr-only">Navbar Options</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 mr-1 dark:bg-zinc-900">
+      <DropdownMenuContent className="w-56 mr-1 dark:bg-zinc-900 rounded-xl">
         <DropdownMenuItem>
           <Search className="mr-2 h-4 w-4" />
           <span>Search</span>
@@ -52,6 +54,17 @@ export default function NavbarOptions() {
           <DropdownMenuItem>
             <Plus className="mr-2 h-4 w-4" />
             <span>New Wall</span>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <Archive className="mr-2 h-4 w-4" />
+            <span>Archive</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Trash2 className="text-red-400 mr-2 h-4 w-4" />
+            <span className="text-red-400">Delete</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

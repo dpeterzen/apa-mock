@@ -5,7 +5,7 @@
 - [ ] cache responsive behavior
 - [ ] title nav component - container flex fill inner space - 
 - [ ] right click, ctrl zoom, green button, auto hide nav title
-
+- [ ] move grid styles out of app.css
 
 consideration: RGL overlap doesn't let you control z index. Quick fix- overlap=false 
 OR

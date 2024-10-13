@@ -59,7 +59,7 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
   }, [generateLayout]);
 
   const handleLayoutChange = useCallback(
-    (layout) => {
+    (layout: Layout[]) => {
       onLayoutChange(layout);
     },
     [onLayoutChange]
@@ -77,7 +77,8 @@ const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight,
   //   }
   // }, []);
 
-  const handleDragStop = (layout: Layout[], oldItem: Layout, newItem: Layout) => {
+  // layout param below is thrown out. layout: Layout[]
+  const handleDragStop = (_: Layout[], oldItem: Layout, newItem: Layout) => {
     const maxCols = 12; // Adjust based on your max columns
     const maxRows = 42; // Adjust based on your max rows
     if (newItem.x + newItem.w > maxCols) {
