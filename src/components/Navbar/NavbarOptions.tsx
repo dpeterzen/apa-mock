@@ -22,7 +22,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import styles from "./NavbarOptions.module.css";
 
 export default function NavbarOptions() {
   const { theme, setTheme } = useTheme();
@@ -40,7 +41,7 @@ export default function NavbarOptions() {
           <span className="sr-only">Navbar Options</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 mr-1 dark:bg-zinc-900 rounded-xl">
+      <DropdownMenuContent className={`${styles.dropdownContent} overflow-y-auto w-56 mr-1 dark:bg-zinc-900 rounded-xl`}>
         <DropdownMenuItem>
           <Search className="mr-2 h-4 w-4" />
           <span>Search</span>
