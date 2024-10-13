@@ -35,11 +35,11 @@ const WallTitle = () => {
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
           autoFocus
-          className="text-zinc-300 w-full max-w-[810px] flex-grow h-[45px] p-1 text-[26px] leading-[35px] font-bold focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:border-zinc-700"
+          className="text-zinc-300 w-full max-w-[810px] flex-grow min-h-[45px] p-1 text-[26px] leading-[35px] font-bold focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:border-zinc-700"
         />
       ) : (
         <h1
-          className={`text-zinc-600 w-full max-w-[810px] flex-grow h-[45px] p-1 border rounded-md text-[26px] leading-[35px] font-bold cursor-default ${
+          className={`text-zinc-600 w-full max-w-[810px] flex-grow min-h-[45px] p-1 border rounded-md text-[26px] leading-[35px] font-bold cursor-default ${
             isHovered ? "border-zinc-900" : "border-zinc-50 dark:border-zinc-950"
           }`}
         >
