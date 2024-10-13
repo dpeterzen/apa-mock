@@ -1,14 +1,23 @@
 import { useCallback } from "react";
 import _ from "lodash";
-import RGL, { WidthProvider } from "react-grid-layout";
+import RGL, { WidthProvider, Layout } from "react-grid-layout";
 import { Textarea } from '@/components/ui/textarea';
-import scoobydoo from '../assets/scoobydoo.jpg';
+import scoobydoo from '@/assets/scoobydoo.jpg';
 
 const ReactGridLayout = WidthProvider(RGL);
 
-const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight, onLayoutChange }) => {
+interface DynamicMinMaxLayoutProps {
+  items: number[]; // Adjust the type as needed
+  cols: number;
+  isDraggable: boolean;
+  isResizable: boolean;
+  rowHeight: number;
+  onLayoutChange: (layout: Layout[]) => void; // Adjust the type as needed
+}
+
+const DynamicMinMaxLayout = ({ items, cols, isDraggable, isResizable, rowHeight, onLayoutChange }: DynamicMinMaxLayoutProps) => {
   const generateLayout = useCallback(() => {
-    return _.map(new Array(items), (item, i) => {
+    return _.map(items, (item, i) => {
       return {
         i: i.toString(),
         x: (i + 1) % cols, // Start x coordinate in the second position
