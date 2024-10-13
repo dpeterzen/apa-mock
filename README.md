@@ -15,6 +15,7 @@ can you dynamically assign z index based on last click?
 - add left and right arrow buttons for switch wall inside menu
 - add dialog to New wall button (WARNING dialog added to plus wall button cause ref error)
 - add sidebar 
+- consider absolute positioning nav elements 
 
 - 1 starts small to big, 2  big to small
 ```1

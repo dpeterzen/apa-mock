@@ -44,11 +44,11 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
     const layout = generateLayout();
     return _.map(layout, (l, index) => {
       return (
-        <div className="relative rounded-sm border-2" key={l.i} data-grid={l}>
+        <div className="relative rounded-[2px] flex" key={l.i} data-grid={l}>
           {index === layout.length - 1 ? (
-            <img src={scoobydoo} alt="Scooby Doo" className="rounded-[2px] w-full h-full object-cover" />
+            <img src={scoobydoo} alt="Scooby Doo" className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain " />
           ) : (
-            <Textarea className="p-0 min-h-0 rounded-md w-full h-full resize-none" defaultValue={l.i}></Textarea>
+            <Textarea className="flex-grow flex-shrink flex-basis-0 m-0.5 p-0 min-h-0 rounded-md resize-none" defaultValue={l.i}></Textarea>
             )}
             <span className="absolute top-[-15px] left-1/2 -rotate-90 transform -translate-x-1/2">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-tally-1"><path d="M4 4v16" /></svg>

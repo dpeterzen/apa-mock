@@ -1,5 +1,3 @@
-
-
 .react-grid-layout {
   max-width: 100vw;
   margin-right: 10px;
@@ -7,19 +5,42 @@
 }
 
 .react-grid-item {
-    min-width: 25px; 
+  min-width: 25px; 
+  min-height: 0;
+  background: rgba(141, 117, 117, 0.17);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.4px);
+  -webkit-backdrop-filter: blur(2.4px);
+  border: 1px solid rgba(141, 117, 117, 0.08);
 }
 
-textarea {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  /* border: 1px solid hsl(var(--border)); */
-  border-radius: var(--radius);
-  padding: 0.5rem;
-  width: 100%;
-  height: 100%;
-  resize: none;
+.dark .react-grid-item {
+    min-width: 25px; 
+    min-height: 0;
+    background: rgba(41, 37, 36, 0.22);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    border: 2px solid rgba(41, 37, 36, 0.034);
 }
+
+
+
+.react-grid-item.react-grid-placeholder {
+  background: none;
+  opacity: 0;
+  transition-duration: none;
+  z-index: 2;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+
+
 
 .dark textarea {
   background-color: hsl(var(--background));
