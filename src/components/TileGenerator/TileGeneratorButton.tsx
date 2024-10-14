@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Plus, LayoutDashboard } from 'lucide-react';
+import { LayoutDashboard } from 'lucide-react';
 import styles from "./TileGeneratorButton.module.css";
 
 const TileGeneratorButton = () => {
