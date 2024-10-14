@@ -3,7 +3,6 @@ import { useTheme } from "@/components/theme-provider";
 import useStrokeColor from "@/hooks/useStrokeColor";
 
 import {
-  LogOut,
   Plus,
   SquareDashed,
   ArrowRightLeft,
@@ -22,7 +21,6 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import styles from "./NavbarOptions.module.css";
@@ -32,7 +30,7 @@ export default function NavbarOptions() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [handle, setHandle] = useState("show");
-  const { strokeColor, setStrokeColor } = useStrokeColor();
+  const { setStrokeColor } = useStrokeColor();
 
   const handleSwitchChange = (checked: boolean) => {
     setHandle(checked ? "show" : "hide");
@@ -67,22 +65,12 @@ export default function NavbarOptions() {
             <span>New wall</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Archive className="mr-2 h-4 w-4" />
-            <span>Archive</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Trash2 className="text-red-600 dark:text-red-400 mr-2 h-4 w-4" />
-            <span className="text-red-600 dark:text-red-400">Delete</span>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
+
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
           <SquareDashed className="mr-2 h-4 w-4" />
-            <span>Handles</span>
+            <span>Handlebars</span>
             <Switch
               className="ml-auto"
               checked={handle === "show"}
@@ -104,10 +92,16 @@ export default function NavbarOptions() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
-        </DropdownMenuItem>
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <Archive className="mr-2 h-4 w-4" />
+            <span>Archive</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Trash2 className="text-red-600 dark:text-red-400 mr-2 h-4 w-4" />
+            <span className="text-red-600 dark:text-red-400">Delete</span>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   )
