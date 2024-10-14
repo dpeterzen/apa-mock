@@ -5,7 +5,6 @@ import { Textarea } from '@/components/ui/textarea';
 import scoobydoo from '@/assets/scoobydoo.jpg';
 import useStrokeColor from "@/hooks/useStrokeColor";
 
-
 const ReactGridLayout = WidthProvider(RGL);
 
 interface DynamicMinMaxLayoutDemoProps {
@@ -35,6 +34,27 @@ const TallySVG: React.FC<{ strokeColor: string }> = ({ strokeColor }) => (
   </svg>
 );
 
+const Handlebars: React.FC = () => {
+  const { strokeColor } = useStrokeColor();
+
+  return (
+    <>
+      <span className="absolute top-[-15px] left-1/2 -rotate-90 transform -translate-x-1/2">
+        <TallySVG strokeColor={strokeColor} />
+      </span>
+      <span className="absolute right-[-9px] top-1/2 transform -translate-y-1/2">
+        <TallySVG strokeColor={strokeColor} />
+      </span>
+      <span className="absolute bottom-[-15px] left-1/2 rotate-90 transform -translate-x-1/2">
+        <TallySVG strokeColor={strokeColor} />
+      </span>
+      <span className="absolute left-[-9px] top-1/2 rotate-180 transform -translate-y-1/2">
+        <TallySVG strokeColor={strokeColor} />
+      </span>
+    </>
+  );
+};
+
 const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
   items,
   cols,
@@ -44,7 +64,6 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
   onLayoutChange,
   useCSSTransforms
 }) => {
-  const { strokeColor } = useStrokeColor();
 
   const generateLayout = useCallback(() => {
     return _.map(items, (item, i) => {
@@ -66,27 +85,28 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
     return _.map(layout, (l, index) => {
       return (
         <div className="relative rounded-[2px] flex" key={l.i} data-grid={l}>
-          {index === layout.length - 1 ? (
-            <img src={scoobydoo} alt="Scooby Doo" className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain " />
+          {index === layout.length - 2 ? (
+            <img src={scoobydoo} alt="Scooby Doo" className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain" />
+          ) : index === layout.length - 1 ? (
+            <div className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/3QHluopq354"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           ) : (
-            <Textarea className="flex-grow flex-shrink flex-basis-0 m-0.5 p-0 min-h-0 rounded-md resize-none" defaultValue={l.i}></Textarea>
+            <Textarea className="flex-grow flex-shrink flex-basis-0 m-3 p-0 min-h-0 rounded-md resize-none" defaultValue={l.i}></Textarea>
           )}
-          <span className="absolute top-[-15px] left-1/2 -rotate-90 transform -translate-x-1/2">
-            <TallySVG strokeColor={strokeColor} />
-          </span>
-          <span className="absolute right-[-9px] top-1/2 transform -translate-y-1/2">
-            <TallySVG strokeColor={strokeColor} />
-          </span>
-          <span className="absolute bottom-[-15px] left-1/2 rotate-90 transform -translate-x-1/2">
-            <TallySVG strokeColor={strokeColor} />
-          </span>
-          <span className="absolute left-[-9px] top-1/2 rotate-180 transform -translate-y-1/2">
-            <TallySVG strokeColor={strokeColor} />
-          </span>
+          <Handlebars />
         </div>
       );
     });
-  }, [generateLayout, strokeColor]);
+  }, [generateLayout]);
 
   const handleLayoutChange = useCallback(
     (layout: Layout[]) => {
