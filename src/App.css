@@ -4,10 +4,10 @@
   margin-left: 10px;
 }
 
-.react-grid-item, .dark .react-grid-item {
+/* .react-grid-item, .dark .react-grid-item {
   min-width: 75px; 
   min-height: 0;
-}
+} */
 
 .react-grid-item {
   background: rgba(141, 117, 117, 0.17);

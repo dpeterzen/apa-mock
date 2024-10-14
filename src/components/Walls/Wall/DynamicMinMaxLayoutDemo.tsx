@@ -121,7 +121,7 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
   );
 
   const handleDragStop = (_: Layout[], oldItem: Layout, newItem: Layout) => {
-    const maxCols = 24; // Adjust based on your max columns
+    const maxCols = 14; // Adjust based on your max columns
     const maxRows = 42; // Adjust based on your max rows
     if (newItem.x + newItem.w > maxCols) {
       newItem.x = maxCols - newItem.w;
