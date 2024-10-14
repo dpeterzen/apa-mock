@@ -69,7 +69,7 @@ const WallTitle = () => {
   }, []);
 
   return (
-    <div className={`flex justify-center mt-2 mb-3 mx-[55px] relative transition-opacity duration-300 ${isFaded ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`flex justify-center mt-1 mb-3 mx-[55px] relative transition-opacity duration-300 ${isFaded ? 'opacity-0' : 'opacity-100'}`}>
       {isEditing ? (
         <div className="relative w-full max-w-[810px]">
           <Input
