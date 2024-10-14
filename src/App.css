@@ -4,9 +4,12 @@
   margin-left: 10px;
 }
 
-.react-grid-item {
-  min-width: 25px; 
+.react-grid-item, .dark .react-grid-item {
+  min-width: 75px; 
   min-height: 0;
+}
+
+.react-grid-item {
   background: rgba(141, 117, 117, 0.17);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(2.4px);
@@ -15,8 +18,6 @@
 }
 
 .dark .react-grid-item {
-    min-width: 25px; 
-    min-height: 0;
     background: rgba(41, 37, 36, 0.22);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2.5px);
