@@ -67,7 +67,7 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
 }) => {
 
   const generateLayout = useCallback(() => {
-    return _.map(items, (item, i) => {
+    return _.map(items, (_, i) => {
       return {
         i: i.toString(),
         x: (i + 1) % cols, // Start x coordinate in the second position
