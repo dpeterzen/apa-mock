@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useTheme } from "@/components/theme-provider";
+import useStrokeColor from "@/hooks/useStrokeColor";
+
 import {
   LogOut,
   Plus,
-  User,
+  SquareDashed,
   ArrowRightLeft,
   EllipsisVertical,
   Search,
@@ -29,11 +31,19 @@ export default function NavbarOptions() {
   const { theme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [handle, setHandle] = useState("show");
+  const { strokeColor, setStrokeColor } = useStrokeColor();
+
+  const handleSwitchChange = (checked: boolean) => {
+    setHandle(checked ? "show" : "hide");
+    setStrokeColor(checked ? "currentColor" : "transparent");
+  };
+
   return (
     <DropdownMenu onOpenChange={setMenuOpen}>
       <DropdownMenuTrigger asChild>
         <Button
-            className={`border-0 h-8 w-8 ${menuOpen ? 'bg-accent dark:bg-zinc-800' : ''}`}
+            className={`border-0 h-[52px] w-8 rounded-[4px] ${menuOpen ? 'bg-accent dark:bg-zinc-800' : ''}`}
             variant="outline"
             size="icon"
           >
@@ -41,7 +51,7 @@ export default function NavbarOptions() {
           <span className="sr-only">Navbar Options</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={`${styles.dropdownContent} overflow-y-auto w-56 mr-1 dark:bg-zinc-900 rounded-xl`}>
+      <DropdownMenuContent className={`${styles.dropdownContent} overflow-y-auto w-56 mr-1 dark:bg-zinc-900 rounded-xl dark:border-0`}>
         <DropdownMenuItem>
           <Search className="mr-2 h-4 w-4" />
           <span>Search</span>
@@ -50,11 +60,11 @@ export default function NavbarOptions() {
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <ArrowRightLeft className="mr-2 h-4 w-4" />
-            <span>Switch Walls</span>
+            <span>Switch walls</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Plus className="mr-2 h-4 w-4" />
-            <span>New Wall</span>
+            <span>New wall</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -71,9 +81,14 @@ export default function NavbarOptions() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
-            <DropdownMenuShortcut></DropdownMenuShortcut>
+          <SquareDashed className="mr-2 h-4 w-4" />
+            <span>Handles</span>
+            <Switch
+              className="ml-auto"
+              checked={handle === "show"}
+              onCheckedChange={handleSwitchChange}
+              onClick={(event) => event.stopPropagation()}
+            />
           </DropdownMenuItem>
 
           <DropdownMenuItem>

@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Plus, LayoutDashboard } from 'lucide-react';
+import styles from "./TileGeneratorButton.module.css";
 
 const TileGeneratorButton = () => {
   const handleClick = () => {
@@ -8,7 +9,7 @@ const TileGeneratorButton = () => {
 
   return (
     <Button
-      className="fixed bottom-4 right-4 w-20 h-20"
+      className={`${styles.tileButton} fixed bottom-4 right-4 w-20 h-20`}
       variant="outline"
       size="icon"
       onClick={handleClick}

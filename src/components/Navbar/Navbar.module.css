@@ -3,6 +3,8 @@
   top: 0;
   z-index: 999;
   transition: border-bottom .1s ease-in-out;
+  /* border-top: 3px solid rgba(30, 196, 58, 0.801) !important; */
+  border-top: 0;
 }
 
 .tooltip {

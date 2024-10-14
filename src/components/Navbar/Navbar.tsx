@@ -23,7 +23,7 @@ const Navbar = () => {
     <nav className={`flex items-center justify-between px-3 h-14 ${styles.navbar} bg-background dark:border-neutral-900 ${isScrolled ? 'border-b' : ''}`}>
       {/* Left Section */}
       <Tooltip text={"Open/close sidebar"}>
-        <Button className="fixed top-3 left-3 border-0 h-8 w-8" variant="outline" size="icon">
+        <Button className="fixed top-[3px] left-3 border-0 h-[52px] w-8 rounded-[4px]" variant="outline" size="icon">
           <LayoutDashboard className="w-6 h-6 rotate-90" />
         </Button>
       </Tooltip>
@@ -32,9 +32,9 @@ const Navbar = () => {
         {/* Title nav component - container flex fill inner space */}
       </div>
       {/* Right Section */}
-      <div className="flex items-center fixed top-3 right-3">
+      <div className="flex items-center fixed top-[3px] right-3">
         <Tooltip text={"New wall"}>
-          <Button className="border-0 h-8 w-8" variant="outline" size="icon">
+          <Button className="border-0 h-[52px] w-8 rounded-[4px]" variant="outline" size="icon">
             <Plus className="h-6 w-6" />
             <span className="sr-only">Add</span>
           </Button>

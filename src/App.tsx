@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider";
+import { StrokeColorProvider } from "@/context/StrokeColorContext";
 import Navbar from "@/components/Navbar/Navbar";
 import TileGeneratorButton from "@/components/TileGenerator/TileGeneratorButton";
 import Wall from "@/components/Walls/Wall/Wall";
@@ -9,11 +10,13 @@ import "./App.css";
 function App() {
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <StrokeColorProvider>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Navbar />
         <Wall />
         <TileGeneratorButton />
-    </ThemeProvider>
+      </ThemeProvider>
+    </StrokeColorProvider>
   );
 }
 
