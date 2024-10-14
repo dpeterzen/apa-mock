@@ -45,7 +45,7 @@ const NavNewWallButton = () => {
                 Cancel
               </Button>
             </DialogClose>
-            <Button type="submit" variant="primary">
+            <Button type="submit">
               Create
             </Button>
           </DialogFooter>
