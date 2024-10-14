@@ -6,7 +6,7 @@ import Wall from "@/components/Walls/Wall/Wall";
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
 import "./App.css";
-import { TitleProvider } from "./context/TitleContext";
+import { TitleProvider } from "@/context/TitleContext";
 
 function App() {
 
