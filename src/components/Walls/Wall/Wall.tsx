@@ -5,7 +5,7 @@ import DynamicMinMaxLayoutDemo from "./DynamicMinMaxLayoutDemo";
 
 const Wall: React.FC = () => {
   // Define the required props for DynamicMinMaxLayout
-  const items = [1, 2, 3, 4]; // Example value, adjust as needed
+  const items = [1, 2, 3, 4, 5]; // Example value, adjust as needed
   const cols = 12; // Example value, adjust as needed
   const isDraggable = true; // Example value, adjust as needed
   const isResizable = true; // Example value, adjust as needed
