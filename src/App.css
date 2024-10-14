@@ -94,7 +94,7 @@
   right: -7px;
 }
 
-.react-grid-item > .react-resizable-handle.react-resizable-handle-s::after,
+/* .react-grid-item > .react-resizable-handle.react-resizable-handle-s::after,
 .react-grid-item > .react-resizable-handle.react-resizable-handle-w::after,
 .react-grid-item > .react-resizable-handle.react-resizable-handle-e::after,
 .react-grid-item > .react-resizable-handle.react-resizable-handle-n::after {
@@ -105,4 +105,4 @@
 .react-grid-item > .react-resizable-handle.react-resizable-handle-ne::after {
 }
 .react-resizable-handle {
-}
+} */

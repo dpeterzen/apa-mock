@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
+import { useTitle } from "@/hooks/useTitle"; // Update the import path
 
 const WallTitle = () => {
-  const [title, setTitle] = useState("apa.io");
+  const { title, setTitle } = useTitle();
   const [tempTitle, setTempTitle] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState("");
+  const [isFaded, setIsFaded] = useState(false);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -55,8 +57,19 @@ const WallTitle = () => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsFaded(window.scrollY > 15);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="flex justify-center my-2 mx-[55px] relative">
+    <div className={`flex justify-center mt-2 mb-3 mx-[55px] relative transition-opacity duration-300 ${isFaded ? 'opacity-0' : 'opacity-100'}`}>
       {isEditing ? (
         <div className="relative w-full max-w-[810px]">
           <Input
