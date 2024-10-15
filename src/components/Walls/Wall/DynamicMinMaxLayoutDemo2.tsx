@@ -13,68 +13,64 @@ type ResizeHandle = "s" | "w" | "e" | "n" | "sw" | "nw" | "se" | "ne";
 
 type DynamicMinMaxLayoutDemoProps = object;
 
-const TileFactory = (type: string, key: string, tileIsLocked: boolean, isClickDisabled: boolean, isFocused: boolean, onFocus: () => void) => {
+const TileFactory = (type: string, key: string, tileIsLocked: boolean, isClickDisabled: boolean) => {
   const handleClick = (e: React.MouseEvent) => {
     if (tileIsLocked) {
       e.stopPropagation();
       e.preventDefault();
-    } else {
-      onFocus();
     }
   };
 
   return (
-    <div
-      className={`relative flex h-full w-full rounded-sm ${isFocused ? 'ring-offset-0 ring' : ''}`}
-      onMouseEnter={onFocus}
-      onClick={handleClick}
-    >
-      {isClickDisabled && (
-        <div className="absolute inset-0 z-10 bg-transparent cursor-move"></div>
-      )}
-      {(() => {
-        switch (type) {
-          case "image":
-            return (
-              <img
-                key={key}
-                src={scoobydoo}
-                alt="Scooby Doo"
-                className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain w-full"
-              />
-            );
-          case "video":
-            return (
-              <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain w-full">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/N3ZGNT5S5IU"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            );
-          case "tweet":
-            return (
-              <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain w-full">
-                <TweetTile className="overflow-y-auto w-full" id="1825961748949860580" />
-              </div>
-            );
-          case "textarea":
-          default:
-            return (
-              <Textarea
-                key={key}
-                className="flex-grow flex-shrink flex-basis-0 m-3 p-0 min-h-0 rounded-md resize-none w-full"
-                defaultValue={key}
-              ></Textarea>
-            );
-        }
-      })()}
-    </div>
+<div className="relative flex h-full w-full">
+  {isClickDisabled && (
+    <div className="absolute inset-0 z-10 bg-transparent cursor-move"></div>
+  )}
+  {(() => {
+    switch (type) {
+      case "image":
+        return (
+          <img
+            key={key}
+            src={scoobydoo}
+            alt="Scooby Doo"
+            className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain w-full"
+            onClick={handleClick}
+          />
+        );
+      case "video":
+        return (
+          <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain w-full" onClick={handleClick}>
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/N3ZGNT5S5IU"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        );
+      case "tweet":
+        return (
+          <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain w-full" onClick={handleClick}>
+            <TweetTile className="overflow-y-auto w-full" id="1825961748949860580" />
+          </div>
+        );
+      case "textarea":
+      default:
+        return (
+          <Textarea
+            key={key}
+            className="flex-grow flex-shrink flex-basis-0 m-3 p-0 min-h-0 rounded-md resize-none w-full"
+            defaultValue={key}
+            onClick={handleClick}
+          ></Textarea>
+        );
+    }
+  })()}
+</div>
   );
 };
 
@@ -86,7 +82,6 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = () => {
   const [layouts, setLayouts] = useState<Layout[]>([]);
   const [tileIsLocked, setTileIsLocked] = useState(false); // State to control the mode
   const [isClickDisabled, setIsClickDisabled] = useState(false); // State to control click events
-  const [focusedTile, setFocusedTile] = useState<string | null>(null); // State to track the focused tile
 
   const generateLayout = useCallback(() => {
     const initialWidth = 2; // Adjust the initial width as needed
@@ -119,12 +114,12 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = () => {
 
       return (
         <div className="relative rounded-md flex" key={l.i} data-grid={l}>
-          {TileFactory(type, l.i, tileIsLocked, isClickDisabled, focusedTile === l.i, () => setFocusedTile(l.i))}
+          {TileFactory(type, l.i, tileIsLocked, isClickDisabled)}
           <Handlebars />
         </div>
       );
     });
-  }, [layouts, tileIsLocked, isClickDisabled, focusedTile]);
+  }, [layouts, tileIsLocked, isClickDisabled]);
 
   const handleLayoutChange = useCallback(
     (layout: Layout[]) => {
@@ -151,17 +146,17 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = () => {
           <Switch
             checked={tileIsLocked}
             onCheckedChange={() => setTileIsLocked(!tileIsLocked)}
-            className="m-2 rounded"
+            className="bg-red-500 text-white p-2 m-2 rounded"
           />
-          <label className="ml-2">Lock Tiles</label>
+          <label className="ml-2 text-white">Lock Tiles</label>
         </div>
         <div>
           <Switch
             checked={isClickDisabled}
             onCheckedChange={() => setIsClickDisabled(!isClickDisabled)}
-            className="m-2 rounded"
+            className="bg-red-500 text-white p-2 m-2 rounded"
           />
-          <label className="ml-2">Disable Click Events</label>
+          <label className="ml-2 text-white">Disable Click Events</label>
         </div>
       </div>
       <ReactGridLayout
@@ -184,6 +179,7 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = () => {
 };
 
 export default DynamicMinMaxLayoutDemo;
+
 
 const TallySVG: React.FC<{ strokeColor: string }> = ({ strokeColor }) => (
   <svg

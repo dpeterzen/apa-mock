@@ -52,7 +52,11 @@
 .react-grid-item > .react-resizable-handle.react-resizable-handle-s,
 .react-grid-item > .react-resizable-handle.react-resizable-handle-w,
 .react-grid-item > .react-resizable-handle.react-resizable-handle-e,
-.react-grid-item > .react-resizable-handle.react-resizable-handle-n,
+.react-grid-item > .react-resizable-handle.react-resizable-handle-n {
+  opacity: 0;
+}
+
+
 .react-grid-item > .react-resizable-handle.react-resizable-handle-sw,
 .react-grid-item > .react-resizable-handle.react-resizable-handle-nw,
 .react-grid-item > .react-resizable-handle.react-resizable-handle-se,
