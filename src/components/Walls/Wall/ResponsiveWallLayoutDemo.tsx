@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import RGL, { WidthProvider, Layout, Responsive } from "react-grid-layout";
+import { WidthProvider, Layout, Responsive } from "react-grid-layout";
 import { Textarea } from '@/components/ui/textarea';
 import scoobydoo from '@/assets/scoobydoo.jpg';
 import useStrokeColor from "@/hooks/useStrokeColor";
 import TweetTile from "@/components/Walls/Tiles/TweetTile";
 
-const ReactGridLayout = WidthProvider(RGL);
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 interface ResponsiveWallLayoutDemoProps {
