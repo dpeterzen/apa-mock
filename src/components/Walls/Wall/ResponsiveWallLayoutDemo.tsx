@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { WidthProvider, Layout, Responsive } from "react-grid-layout";
+import RGL, { WidthProvider, Layout, Responsive } from "react-grid-layout";
 import { Textarea } from '@/components/ui/textarea';
 import scoobydoo from '@/assets/scoobydoo.jpg';
 import useStrokeColor from "@/hooks/useStrokeColor";
 import TweetTile from "@/components/Walls/Tiles/TweetTile";
 
+const ReactGridLayout = WidthProvider(RGL);
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 interface ResponsiveWallLayoutDemoProps {
   items: number[];
-  cols: number;
   rowHeight: number;
   onLayoutChange: (layout: Layout[]) => void;
 }
@@ -18,7 +18,7 @@ type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
 
 const ResponsiveWallLayoutDemo: React.FC<ResponsiveWallLayoutDemoProps> = ({
   items = [1, 2, 3, 4, 5],
-  rowHeight = 30,
+  rowHeight = 35,
   onLayoutChange = () => {}
 }) => {
   const [layouts, setLayouts] = useState<{ [key: string]: Layout[] }>({});
@@ -28,7 +28,7 @@ const ResponsiveWallLayoutDemo: React.FC<ResponsiveWallLayoutDemoProps> = ({
     const widths: { [key in 'lg' | 'md' | 'sm' | 'xs' | 'xxs']: number } = { lg: 3, md: 4, sm: 6, xs: 12, xxs: 12 };
     return Object.keys(widths).reduce((memo, breakpoint) => {
       const width = widths[breakpoint as 'lg' | 'md' | 'sm' | 'xs' | 'xxs'];
-      const cols = { lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 }[breakpoint as 'lg' | 'md' | 'sm' | 'xs' | 'xxs'];
+      const cols = { lg: 12, md: 10, sm: 8, xs: 6, xxs: 4 }[breakpoint as 'lg' | 'md' | 'sm' | 'xs' | 'xxs'];
       memo[breakpoint] = [
         ...times.map((_, i) => ({
           x: (i * width) % cols,
@@ -66,7 +66,7 @@ const ResponsiveWallLayoutDemo: React.FC<ResponsiveWallLayoutDemoProps> = ({
             ></iframe>
           </div>
         ) : index === items.length - 1 ? (
-          <div className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain ">
+          <div className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain min-h-[170px] min-w-[270px]">
             <TweetTile className="overflow-y-auto" id="1825961748949860580" />
           </div>
         ) : (
@@ -85,9 +85,14 @@ const ResponsiveWallLayoutDemo: React.FC<ResponsiveWallLayoutDemoProps> = ({
     <ResponsiveReactGridLayout
       layouts={layouts}
       onLayoutChange={handleLayoutChange}
-      cols={{ lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 }}
+      cols={{ lg: 12, md: 10, sm: 8, xs: 6, xxs: 4 }}
       rowHeight={rowHeight}
       autoSize={true}
+      breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+      measureBeforeMount={false}
+      useCSSTransforms={true}
+      compactType="vertical"
+      preventCollision={false}
     >
       {generateDOM()}
     </ResponsiveReactGridLayout>

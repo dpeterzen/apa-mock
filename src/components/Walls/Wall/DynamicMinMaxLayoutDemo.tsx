@@ -85,7 +85,7 @@ const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
     const layout = generateLayout();
     return _.map(layout, (l, index) => {
       return (
-        <div className="relative rounded-[2px] flex" key={l.i} data-grid={l}>
+        <div className="relative rounded-md flex" key={l.i} data-grid={l}>
           {index === layout.length - 3 ? (
             <img src={scoobydoo} alt="Scooby Doo" className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain" />
           ) : index === layout.length - 2 ? (
