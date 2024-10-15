@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState, useEffect, useMemo } from "react";
 import _ from "lodash";
 import RGL, { WidthProvider, Layout } from "react-grid-layout";
 import { Textarea } from '@/components/ui/textarea';
@@ -8,15 +8,138 @@ import TweetTile from "@/components/Walls/Tiles/TweetTile";
 
 const ReactGridLayout = WidthProvider(RGL);
 
-interface DynamicMinMaxLayoutDemoProps {
-  items: number[]; // Adjust the type as needed
-  cols: number;
-  isDraggable: boolean;
-  isResizable: boolean;
-  rowHeight: number;
-  onLayoutChange: (layout: Layout[]) => void;
-  useCSSTransforms: boolean;
-}
+type ResizeHandle = "s" | "w" | "e" | "n" | "sw" | "nw" | "se" | "ne";
+
+type DynamicMinMaxLayoutDemoProps = object;
+
+const TileFactory = (type: string, key: string) => {
+  switch (type) {
+    case "image":
+      return (
+        <img
+          key={key}
+          src={scoobydoo}
+          alt="Scooby Doo"
+          className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain"
+        />
+      );
+    case "video":
+      return (
+        <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/N3ZGNT5S5IU"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      );
+    case "tweet":
+      return (
+        <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain">
+          <TweetTile className="overflow-y-auto" id="1825961748949860580" />
+        </div>
+      );
+    case "textarea":
+    default:
+      return (
+        <Textarea
+          key={key}
+          className="flex-grow flex-shrink flex-basis-0 m-3 p-0 min-h-0 rounded-md resize-none"
+          defaultValue={key}
+        ></Textarea>
+      );
+  }
+};
+
+const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = () => {
+  const items = useMemo(() => [1, 2, 3, 4, 5], []); // Example value, adjust as needed
+  const cols = 12; // Example value, adjust as needed
+  const isDraggable = true; // Example value, adjust as needed
+  const isResizable = true; // Example value, adjust as needed
+  const rowHeight = 30; // Example value, adjust as needed
+
+  const [layouts, setLayouts] = useState<Layout[]>([]);
+
+  const generateLayout = useCallback(() => {
+    const initialWidth = 2; // Adjust the initial width as needed
+    const initialHeight = 3; // Adjust the initial height as needed
+  
+    return _.map(items, (_, i) => {
+      return {
+        i: i.toString(),
+        x: (i * initialWidth) % cols, // Place divs adjacent to each other
+        y: Math.floor((i * initialWidth) / cols) * initialHeight, // Adjust y coordinate based on width
+        w: initialWidth,
+        h: initialHeight,
+        minH: 2,
+        maxH: 80,
+        resizeHandles: ["s", "w", "e", "n", "sw", "nw", "se", "ne"] as ResizeHandle[]
+      };
+    });
+  }, [items, cols]);
+
+  useEffect(() => {
+    setLayouts(generateLayout());
+  }, [generateLayout]);
+
+  const generateDOM = useCallback(() => {
+    return _.map(layouts, (l, index) => {
+      let type = "textarea"; // Default type
+      if (index === layouts.length - 3) type = "image";
+      else if (index === layouts.length - 2) type = "video";
+      else if (index === layouts.length - 1) type = "tweet";
+
+      return (
+        <div className="relative rounded-md flex" key={l.i} data-grid={l}>
+          {TileFactory(type, l.i)}
+          <Handlebars />
+        </div>
+      );
+    });
+  }, [layouts]);
+
+  const handleLayoutChange = useCallback(
+    (layout: Layout[]) => {
+      console.log("Layout changed:", layout);
+    },
+    []
+  );
+
+  const handleDragStop = (_: Layout[], oldItem: Layout, newItem: Layout) => {
+    const maxCols = 12; // Adjust based on your max columns
+    const maxRows = 42; // Adjust based on your max rows
+    if (newItem.x + newItem.w > maxCols) {
+      newItem.x = maxCols - newItem.w;
+    }
+    if (newItem.y >= maxRows) {
+      newItem.y = oldItem.y; // Prevent moving if it exceeds the max row limit
+    }
+  };
+
+  return (
+    <ReactGridLayout
+      className=""
+      onLayoutChange={handleLayoutChange}
+      isDraggable={isDraggable}
+      isResizable={isResizable}
+      rowHeight={rowHeight}
+      cols={cols}
+      verticalCompact={false}
+      allowOverlap={true}
+      onDragStop={handleDragStop}
+      useCSSTransforms={true}
+      margin={[1, 1]}
+    >
+      {generateDOM()}
+    </ReactGridLayout>
+  );
+};
+
+export default DynamicMinMaxLayoutDemo;
 
 const TallySVG: React.FC<{ strokeColor: string }> = ({ strokeColor }) => (
   <svg
@@ -55,99 +178,3 @@ const Handlebars: React.FC = () => {
     </>
   );
 };
-
-const DynamicMinMaxLayoutDemo: React.FC<DynamicMinMaxLayoutDemoProps> = ({
-  items,
-  cols,
-  isDraggable,
-  isResizable,
-  rowHeight,
-  onLayoutChange,
-  useCSSTransforms
-}) => {
-
-  const generateLayout = useCallback(() => {
-    return _.map(items, (_, i) => {
-      return {
-        i: i.toString(),
-        x: (i + 1) % cols, // Start x coordinate in the second position
-        y: Math.floor((i + 1) / cols),
-        w: 1,
-        h: 2,
-        minH: 2,
-        maxH: 80,
-        resizeHandles: ["s", "w", "e", "n", "sw", "nw", "se", "ne"]
-      };
-    });
-  }, [items, cols]);
-
-  const generateDOM = useCallback(() => {
-    const layout = generateLayout();
-    return _.map(layout, (l, index) => {
-      return (
-        <div className="relative rounded-md flex" key={l.i} data-grid={l}>
-          {index === layout.length - 3 ? (
-            <img src={scoobydoo} alt="Scooby Doo" className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain" />
-          ) : index === layout.length - 2 ? (
-            <div className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/N3ZGNT5S5IU"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          ) : index === layout.length - 1 ? (
-            <div className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain ">
-              <TweetTile className=" overflow-y-auto" id="1825961748949860580" />
-            </div>
-          ) : (
-            <Textarea className="flex-grow flex-shrink flex-basis-0 m-3 p-0 min-h-0 rounded-md resize-none" defaultValue={l.i}></Textarea>
-          )}
-          <Handlebars />
-        </div>
-      );
-    });
-  }, [generateLayout]);
-
-  const handleLayoutChange = useCallback(
-    (layout: Layout[]) => {
-      onLayoutChange(layout);
-    },
-    [onLayoutChange]
-  );
-
-  const handleDragStop = (_: Layout[], oldItem: Layout, newItem: Layout) => {
-    const maxCols = 14; // Adjust based on your max columns
-    const maxRows = 42; // Adjust based on your max rows
-    if (newItem.x + newItem.w > maxCols) {
-      newItem.x = maxCols - newItem.w;
-    }
-    if (newItem.y >= maxRows) {
-      newItem.y = oldItem.y; // Prevent moving if it exceeds the max row limit
-    }
-  };
-
-  return (
-    <ReactGridLayout
-      className=""
-      onLayoutChange={handleLayoutChange}
-      isDraggable={isDraggable}
-      isResizable={isResizable}
-      rowHeight={rowHeight}
-      cols={cols}
-      verticalCompact={false}
-      allowOverlap={true}
-      onDragStop={handleDragStop}
-      useCSSTransforms={useCSSTransforms}
-      margin={[1, 1]}
-    >
-      {generateDOM()}
-    </ReactGridLayout>
-  );
-};
-
-export default DynamicMinMaxLayoutDemo;
