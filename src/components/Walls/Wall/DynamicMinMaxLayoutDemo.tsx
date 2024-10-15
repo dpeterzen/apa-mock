@@ -34,13 +34,13 @@ const TileFactory = (type: string, key: string, tileIsLocked: boolean, isClickDi
             key={key}
             src={scoobydoo}
             alt="Scooby Doo"
-            className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain h-full w-full"
+            className="flex-grow flex-shrink flex-basis-0 m-0.5 rounded-sm object-contain w-full"
             onClick={handleClick}
           />
         );
       case "video":
         return (
-          <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain h-full w-full" onClick={handleClick}>
+          <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain w-full" onClick={handleClick}>
             <iframe
               width="100%"
               height="100%"
@@ -54,8 +54,8 @@ const TileFactory = (type: string, key: string, tileIsLocked: boolean, isClickDi
         );
       case "tweet":
         return (
-          <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain h-full w-full" onClick={handleClick}>
-            <TweetTile className="overflow-y-auto h-full w-full" id="1825961748949860580" />
+          <div key={key} className="flex-grow flex-shrink flex-basis-0 m-3 rounded-sm object-contain w-full" onClick={handleClick}>
+            <TweetTile className="overflow-y-auto w-full" id="1825961748949860580" />
           </div>
         );
       case "textarea":
@@ -63,7 +63,7 @@ const TileFactory = (type: string, key: string, tileIsLocked: boolean, isClickDi
         return (
           <Textarea
             key={key}
-            className="flex-grow flex-shrink flex-basis-0 m-3 p-0 min-h-0 rounded-md resize-none h-full w-full"
+            className="flex-grow flex-shrink flex-basis-0 m-3 p-0 min-h-0 rounded-md resize-none w-full"
             defaultValue={key}
             onClick={handleClick}
           ></Textarea>
